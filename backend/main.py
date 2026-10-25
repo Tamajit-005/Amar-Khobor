@@ -77,6 +77,16 @@ class SettingsPayload(BaseModel):
     tts_engine: Optional[str] = None
 
 
+@app.get("/")
+def root():
+    return {
+        "name": "Amar Khobor API",
+        "status": "online",
+        "docs": "/docs",
+        "health": "/health",
+    }
+
+
 @app.get("/health")
 def health_check():
     return {"status": "ok", "mock_mode": settings.MOCK_MODE}
