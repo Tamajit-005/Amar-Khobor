@@ -4,6 +4,7 @@ import shutil
 import tempfile
 import uuid
 import zipfile
+from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Optional
 
@@ -17,10 +18,36 @@ from backend.db import db
 from pipeline.run import run_pipeline
 
 
+def _cleanup_ephemeral_output():
+    """Wipe session audio output to ensure clean ephemeral operation."""
+    output_dir = Path("output")
+    if output_dir.exists():
+        for item in output_dir.iterdir():
+            if item.name == "sample_demo":
+                continue
+            if item.is_dir():
+                shutil.rmtree(item, ignore_errors=True)
+            elif item.is_file():
+                try:
+                    item.unlink(missing_ok=True)
+                except OSError:
+                    pass
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup: remove any previous session audio
+    _cleanup_ephemeral_output()
+    yield
+    # Shutdown / Turn off: remove any session audio
+    _cleanup_ephemeral_output()
+
+
 app = FastAPI(
     title="Amar Khobor API",
     description="Multilingual Family WhatsApp Overnight Audio Briefing System",
     version="1.0.0",
+    lifespan=lifespan,
 )
 
 # Enable CORS for the Next.js frontend only (override with ALLOWED_ORIGINS).

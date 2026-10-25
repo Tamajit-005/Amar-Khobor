@@ -106,3 +106,48 @@ Hope this is helpful! Let me know if you need any changes."""
     assert digest.spoken_script.startswith("Good morning")
     assert len(digest.show_notes) == 1
     assert digest.show_notes[0].category == "event"
+
+
+def test_json_extraction_with_cot_rambling_and_array_wrapper():
+    # Simulates Gemma dumping internal monologue with curly braces before emitting an array-wrapped JSON object
+    raw_cot_response = """Let's think step by step:
+1. First, we need to extract claims: { "thought": "Dadu needs medicine", "step": 1 }
+2. Next, draft the spoken_script without brackets or timestamps.
+3. Show notes must have verified claims.
+
+Here is the final output:
+[
+  {
+    "spoken_script": "Good morning everyone! Dadu reminded us that medicines must be brought home.",
+    "show_notes": [
+      {
+        "claim": "Dadu needs medicine",
+        "sender": "Dadu",
+        "timestamp": "8:14 PM",
+        "category": "health",
+        "urgent": true
+      }
+    ]
+  }
+]
+Hope this helps!"""
+
+    idx = raw_cot_response.rfind('"spoken_script"')
+    assert idx != -1
+    start_idx = raw_cot_response.rfind("{", 0, idx)
+    end_idx = raw_cot_response.rfind("}")
+    assert start_idx != -1 and end_idx != -1 and end_idx > start_idx
+    cleaned_json = raw_cot_response[start_idx : end_idx + 1]
+
+    import json
+    data = json.loads(cleaned_json)
+    if isinstance(data, list) and len(data) > 0 and isinstance(data[0], dict):
+        data = data[0]
+
+    digest = DigestResponse(
+        spoken_script=data["spoken_script"],
+        show_notes=[ShowNoteItem(**item) for item in data["show_notes"]],
+    )
+    assert "Dadu" in digest.spoken_script
+    assert len(digest.show_notes) == 1
+    assert digest.show_notes[0].urgent is True

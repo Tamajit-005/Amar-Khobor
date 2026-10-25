@@ -166,13 +166,15 @@ pipeline/           Core processing pipeline
 
 backend/            FastAPI server, MongoDB persistence
 frontend/           Next.js single-page UI
-tests/              35 tests covering parser, VAD, STT, TTS, eval, API
+tests/              37 tests covering parser, VAD, STT, TTS, eval, API
 test_data/          Bake-off manifest + voice clips
 sample_data/        Demo WhatsApp export fixture
+demo/               Real sample briefing MP3, structured JSON digest, and STT bake-off comparison
 ```
 
 ## Honest Limitations
 
+- **Gemma reasoning & schema wrapping:** Gemma 4 occasionally emitted internal chain-of-thought monologue before the JSON digest, and sometimes wrapped the output in an array (`[{...}]`). The pipeline hardens the prompt against preambles and employs a tolerant backward JSON extractor anchored to `"spoken_script"`, turning a flaky LLM response into a deterministic parse.
 - **STT accuracy on heavy code-mixing varies.** Saaras handled my Benglish test clip well; Whisper struggled. One clip is an anecdote, not a benchmark — the bake-off harness exists precisely because more clips are needed before claiming a winner.
 - **The VAD is energy-based, not neural.** It's cheap and fast, but a loud TV in the background can fool it. A neural VAD (Silero) is the obvious next upgrade.
 - **No authentication on the API.** This is a single-family deployment assumption. Before multi-user use, it needs auth and per-user rate limits.

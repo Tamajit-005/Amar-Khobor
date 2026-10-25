@@ -52,7 +52,8 @@ INPUT TRANSCRIPTS:
 {transcripts_json}
 
 OUTPUT FORMAT:
-Respond with pure JSON matching the following schema:
+Respond with ONLY the raw JSON object. Do NOT include any reasoning, planning, internal monologue, drafting, notes, or explanation before or after the JSON. Do NOT wrap the JSON in an array. Your entire response must start with {{ and end with }}.
+Matching schema:
 {{
   "spoken_script": "...",
   "show_notes": [
@@ -185,16 +186,28 @@ def generate_digest(
         )
         content = response.text
 
-    # Robust extraction between first '{' and last '}' to handle preambles, chat, or code fences
-    start_idx = content.find("{")
-    end_idx = content.rfind("}")
-    if start_idx != -1 and end_idx != -1 and end_idx > start_idx:
-        cleaned_json = content[start_idx : end_idx + 1]
+    # Find the LAST JSON object containing spoken_script — skips any
+    # chain-of-thought reasoning Gemma emits before the JSON.
+    idx = content.rfind('"spoken_script"')
+    if idx != -1:
+        start_idx = content.rfind("{", 0, idx)
+        end_idx = content.rfind("}")
+        if start_idx != -1 and end_idx != -1 and end_idx > start_idx:
+            cleaned_json = content[start_idx : end_idx + 1]
+        else:
+            cleaned_json = content.strip()
     else:
-        cleaned_json = content.strip()
+        start_idx = content.find("{")
+        end_idx = content.rfind("}")
+        if start_idx != -1 and end_idx != -1 and end_idx > start_idx:
+            cleaned_json = content[start_idx : end_idx + 1]
+        else:
+            cleaned_json = content.strip()
 
     try:
         data = json.loads(cleaned_json)
+        if isinstance(data, list) and len(data) > 0 and isinstance(data[0], dict):
+            data = data[0]
         script = _sanitize_spoken_script(data.get("spoken_script", ""))
         show_notes = [ShowNoteItem(**item) for item in data.get("show_notes", [])]
         return DigestResponse(spoken_script=script, show_notes=show_notes)

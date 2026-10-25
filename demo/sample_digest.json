@@ -1,0 +1,96 @@
+{
+  "status": "success",
+  "run_id": "digest_edd7b468",
+  "provider": "saaras",
+  "tts_engine": "elevenlabs",
+  "language_mode": "benglish",
+  "total_messages": 56,
+  "total_voice_notes": 4,
+  "transcripts": [
+    {
+      "clip_id": "clip_001",
+      "sender": "Baba",
+      "timestamp_str": "25/10/26, 10:25 pm",
+      "filename": "PTT-20261025-WA0028.opus",
+      "text": "আর ভাবছি এখন থেকেই প্ল্যান করা উচিত কোথায় ঘুরবো, কত টাকা খরচ হবে আর কে কে যাচ্ছে। আমি তো ভাবলাম শান্তিনিকেতনে একটা ভালো লজে থাকবো আর ওখানে সোনাঝুরির হাটে হাটও দেখে আসতে পারি। তোমরা ভেবে দেখো ভালো অপশন আছে নাকি।",
+      "skipped_vad": false,
+      "energy": 0.133797,
+      "is_forwarded": false,
+      "latency_ms": 1362,
+      "char_count": 211,
+      "provider": "saaras",
+      "model": "saaras:v4",
+      "language_mode": "benglish"
+    },
+    {
+      "clip_id": "clip_002",
+      "sender": "Baba",
+      "timestamp_str": "25/10/26, 10:29 pm",
+      "filename": "PTT-20261025-WA0029.opus",
+      "text": "ঠিক আছে, দুহাজার করে খরচ করলে ভালো। কিন্তু সোনাঝুরির হাটে যদি বেশি কেনাকাটা হয়, ওখানে বেশি খরচ করবো না। এবার তোমরা সেটা বুঝে নিও।",
+      "skipped_vad": false,
+      "energy": 0.13542,
+      "is_forwarded": false,
+      "latency_ms": 478,
+      "char_count": 130,
+      "provider": "saaras",
+      "model": "saaras:v4",
+      "language_mode": "benglish"
+    },
+    {
+      "clip_id": "clip_003",
+      "sender": "Baba",
+      "timestamp_str": "25/10/26, 10:35 pm",
+      "filename": "PTT-20261025-WA0030.opus",
+      "text": "আমি ভেবেছিলাম হার্টের সমস্যা, কিন্তু দাদু বলল গ্যাসের সমস্যা। এদেকাত, তুমি এখনই যাও দাদুকে দেখে আসো। আর বাকিরা প্লিজ টেনশন করো না, আমিও এখনই যাচ্ছি।",
+      "skipped_vad": false,
+      "energy": 0.122366,
+      "is_forwarded": false,
+      "latency_ms": 517,
+      "char_count": 148,
+      "provider": "saaras",
+      "model": "saaras:v4",
+      "language_mode": "benglish"
+    },
+    {
+      "clip_id": "clip_004",
+      "sender": "Baba",
+      "timestamp_str": "25/10/26, 10:38 pm",
+      "filename": "PTT-20261025-WA0031.opus",
+      "text": "দাদু এখন ভালো আছে। খিচুড়ি খেয়ে নিল। কাল সকালে ডক্টর সেনের কাছে নিয়ে যাব। তোমরা সবাই ঘুমাও। কালকে দেখা যাবে।",
+      "skipped_vad": false,
+      "energy": 0.121239,
+      "is_forwarded": false,
+      "latency_ms": 1154,
+      "char_count": 110,
+      "provider": "saaras",
+      "model": "saaras:v4",
+      "language_mode": "benglish"
+    }
+  ],
+  "spoken_script": "Shobai kemon acho? Amar Khobor is here with a little update from Baba. Baba is already dreaming about our next trip! He's suggesting Shantiniketan—staying in a nice lodge and visiting the Sonajhuri Haat. He also mentioned a budget of around 2000, though he says we might spend a bit more if we enjoy some shopping there. So do think about it, okay?\n\nOn a more serious note, there was a little scare with Dadu. Baba thought it might be a heart issue, but Dadu mentioned it's just gas. Edkat went to check on him, and Baba is also heading there. Thankfully, Dadu is doing much better now and has already had some khichdi. Baba will be taking him to see Dr. Sen tomorrow morning. So please, don't tension too much and everyone get some good sleep. We'll catch up in the morning. Shuvo ratri!",
+  "show_notes": [
+    {
+      "claim": "Plan a trip to Shantiniketan and visit Sonajhuri Haat.",
+      "sender": "Baba",
+      "timestamp": "Yesterday 10:25 PM",
+      "category": "travel",
+      "urgent": false
+    },
+    {
+      "claim": "Estimated budget for the trip is around 2000, depending on shopping.",
+      "sender": "Baba",
+      "timestamp": "Yesterday 10:29 PM",
+      "category": "money",
+      "urgent": false
+    },
+    {
+      "claim": "Dadu's health update: it was a gas issue, not heart-related; he will see Dr. Sen tomorrow.",
+      "sender": "Baba",
+      "timestamp": "Yesterday 10:35 PM",
+      "category": "health",
+      "urgent": true
+    }
+  ],
+  "audio_path": "output/final_briefing/digest.mp3"
+}
