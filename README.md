@@ -18,7 +18,7 @@ Catching up means playing every note, remembering who said what, and mentally as
 
 ## Demo
 
-> [**▶ Sample audio briefing — 90 seconds**](demo/sample_briefing.mp3)  
+> [**▶ Sample audio briefing**](demo/sample_briefing.mp3)  
 > *Generated from a real multilingual family WhatsApp export: 4 voice notes in Bengali and Benglish, summarized by Gemma, narrated with ElevenLabs.*
 
 The digest arrives as two things at once:
