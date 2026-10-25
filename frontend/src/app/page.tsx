@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   UploadCloud,
   FileArchive,
@@ -72,7 +72,12 @@ export default function Home() {
       setStatus("processing");
       setActiveTab("digest");
     } catch (e: any) {
-      setUploadError(e.message || "Failed to start ingest");
+      const msg = e.message || "Failed to start ingest";
+      if (msg.toLowerCase().includes("fetch failed") || msg.toLowerCase().includes("failed to fetch")) {
+        setUploadError("Backend is warming up or unreachable. Please retry in a few seconds.");
+      } else {
+        setUploadError(msg);
+      }
     } finally {
       setIsUploading(false);
     }

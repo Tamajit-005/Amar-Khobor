@@ -50,9 +50,10 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# Enable CORS for the Next.js frontend only (override with CORS_ORIGINS or ALLOWED_ORIGINS).
+# Enable CORS for the Next.js frontend (local dev, production, and Vercel preview deploys).
 _origins_env = os.getenv("CORS_ORIGINS") or os.getenv(
-    "ALLOWED_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000"
+    "ALLOWED_ORIGINS",
+    "http://localhost:3000,http://127.0.0.1:3000,https://amar-khobor.vercel.app",
 )
 ALLOWED_ORIGINS = [
     origin.strip()
@@ -66,6 +67,7 @@ MAX_UPLOAD_BYTES = int(os.getenv("MAX_UPLOAD_BYTES", str(500 * 1024 * 1024)))
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
