@@ -5,10 +5,10 @@ import { Play, Pause, Volume2, RotateCcw, FastForward, Download } from "lucide-r
 
 interface AudioPlayerProps {
   audioUrl: string;
-  ttsEngine: string;
+  ttsEngine?: string;
 }
 
-export const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioUrl, ttsEngine }) => {
+export const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioUrl }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -70,21 +70,19 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioUrl, ttsEngine })
   };
 
   return (
-    <div className="bg-gradient-to-r from-orange-50 via-white to-amber-50 border border-orange-200 rounded-2xl p-6 shadow-sm">
+    <div className="bg-gradient-to-r from-orange-50 via-white to-amber-50 border border-orange-200 rounded-2xl p-4 sm:p-6 shadow-sm">
       <audio ref={audioRef} src={audioUrl} preload="metadata" />
 
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mb-4">
         <div>
-          <span className="text-xs uppercase font-bold tracking-wider text-orange-600 bg-orange-100 px-2.5 py-0.5 rounded-full">
+          <span className="text-[11px] sm:text-xs uppercase font-bold tracking-wider text-orange-600 bg-orange-100 px-2.5 py-0.5 rounded-full">
             Morning Voice Briefing
           </span>
-          <h3 className="text-lg font-bold text-gray-900 mt-1">আজকের পারিবারিক খবর (Today's Digest)</h3>
+          <h3 className="text-base sm:text-lg font-bold text-gray-900 mt-1">Today's Digest (আজকের খবর)</h3>
         </div>
 
         {/* ElevenLabs Attribution Requirement */}
-        <div className="flex items-center space-x-2 text-xs font-semibold text-gray-500 bg-white border border-gray-200 px-3 py-1.5 rounded-full shadow-sm">
-          <span>Engine: <span className="text-gray-800">{ttsEngine}</span></span>
-          <span className="text-gray-300">|</span>
+        <div className="flex items-center space-x-2 text-xs font-semibold text-gray-500 bg-white border border-gray-200 px-3 py-1.5 rounded-full shadow-sm self-start sm:self-auto">
           <span className="text-orange-700 font-bold">Powered by ElevenLabs</span>
         </div>
       </div>
@@ -106,11 +104,11 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioUrl, ttsEngine })
       </div>
 
       {/* Player Controls */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-3">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex items-center space-x-2.5 sm:space-x-3">
           <button
             onClick={togglePlay}
-            className="w-12 h-12 rounded-full bg-orange-600 hover:bg-orange-700 active:scale-95 text-white flex items-center justify-center shadow-lg shadow-orange-600/30 transition"
+            className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-orange-600 hover:bg-orange-700 active:scale-95 text-white flex items-center justify-center shadow-lg shadow-orange-600/30 transition shrink-0"
           >
             {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5 ml-0.5" />}
           </button>
@@ -124,7 +122,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioUrl, ttsEngine })
             className="p-2 text-gray-600 hover:text-gray-900 hover:bg-white rounded-full transition"
             title="Rewind 10 seconds"
           >
-            <RotateCcw className="w-5 h-5" />
+            <RotateCcw className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
 
           <button
@@ -140,8 +138,8 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioUrl, ttsEngine })
           download="amar_khobor_digest.mp3"
           className="flex items-center gap-1.5 text-xs font-semibold text-gray-600 hover:text-orange-600 bg-white border border-gray-200 px-3 py-1.5 rounded-lg shadow-sm transition"
         >
-          <Download className="w-4 h-4" />
-          Download Audio
+          <Download className="w-4 h-4 shrink-0" />
+          <span>Download Audio</span>
         </a>
       </div>
     </div>

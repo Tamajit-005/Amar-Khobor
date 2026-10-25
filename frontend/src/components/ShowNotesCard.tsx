@@ -49,8 +49,8 @@ export const ShowNotesCard: React.FC<{ item: ShowNoteItem; index: number }> = ({
         item.urgent ? "border-red-300 ring-1 ring-red-200" : "border-gray-200"
       }`}
     >
-      <div className="flex items-center justify-between mb-2.5">
-        <div className="flex items-center space-x-2">
+      <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+        <div className="flex flex-wrap items-center gap-1.5">
           <span
             className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold border ${cat.bg}`}
           >
@@ -63,7 +63,7 @@ export const ShowNotesCard: React.FC<{ item: ShowNoteItem; index: number }> = ({
             </span>
           )}
         </div>
-        <span className="text-xs font-medium text-gray-400 flex items-center gap-1">
+        <span className="text-xs font-medium text-gray-400 flex items-center gap-1 shrink-0">
           <Clock className="w-3 h-3" />
           {item.timestamp}
         </span>
