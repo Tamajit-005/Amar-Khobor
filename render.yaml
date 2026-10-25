@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: amar-khobor-backend
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: starter
+    envVars:
+      - key: SARVAM_API_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMMA_MODEL
+        value: gemma-4
+      - key: LLM_PROVIDER
+        value: google
+      - key: WHISPER_MODEL
+        value: whisper-large-v3
+      - key: GROQ_API_URL
+        value: https://api.groq.com/openai/v1/audio/transcriptions
+      - key: ELEVENLABS_API_KEY
+        sync: false
+      - key: ELEVENLABS_MODEL_ID
+        value: eleven_v4_turbo
+      - key: ELEVENLABS_VOICE_ID
+        sync: false
+      - key: TTS_ENGINE
+        value: edge-tts
+      - key: EDGE_TTS_VOICE
+        value: bn-IN-BashkarNeural
+      - key: MOCK_MODE
+        value: "false"
+      - key: CORS_ORIGINS
+        sync: false

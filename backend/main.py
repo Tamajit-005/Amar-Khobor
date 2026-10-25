@@ -50,12 +50,13 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# Enable CORS for the Next.js frontend only (override with ALLOWED_ORIGINS).
+# Enable CORS for the Next.js frontend only (override with CORS_ORIGINS or ALLOWED_ORIGINS).
+_origins_env = os.getenv("CORS_ORIGINS") or os.getenv(
+    "ALLOWED_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000"
+)
 ALLOWED_ORIGINS = [
     origin.strip()
-    for origin in os.getenv(
-        "ALLOWED_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000"
-    ).split(",")
+    for origin in _origins_env.split(",")
     if origin.strip()
 ]
 
