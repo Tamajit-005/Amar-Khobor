@@ -83,12 +83,16 @@ Rather than pick a transcription provider based on a benchmark table from someon
 
 Text normalization before WER: Unicode NFC, zero-width joiner/non-joiner stripping, punctuation and case folding.
 
-**Results from a real 13-second Bengali voice note** (food order, Benglish mixed in):
+**Bake-off results from 4 real family voice notes** (trip planning, budget & Dadu's health update):
 
-| Provider | Transcript quality |
-|---|---|
-| **Saaras** | Coherent and complete — captured the full request including "দুটো রুটি হলে হবে" and code-mixed "চিলি চিকেন করিস, বেটার হবে" |
-| **Whisper** | Repetitive and fragmented — lost sentence structure, repeated "চিকেন" three times, dropped context |
+| Metric | Sarvam Saaras (`saaras:v4`) | Groq Whisper (`whisper-large-v3`) |
+|---|---|---|
+| **Monolingual WER ↓** | **0.00%** | **67.13%** |
+| **Noise Hallucinations** | **0** (clean silence) | **1** (*"Thank you for watching! Subscribe for more."*) |
+| **Transcription Quality** | Flawless transcription across all 4 clips; accurate spelling, punctuation, and medical terms. | Heavily fragmented, severe phonetic distortions (*পলান* for প্ল্যান, *গুরবো* for ঘুরবো, *হাটে সমসা* for হার্টের সমস্যা), dropped sentence endings. |
+| **Average Latency ↓** | **499 ms** | **814 ms** |
+
+Full methodology, ground truth, and per-clip transcripts: [`demo/stt_comparison.md`](demo/stt_comparison.md) · [`test_data/manifest.yaml`](test_data/manifest.yaml) · [`test_data/eval_results.json`](test_data/eval_results.json)
 
 
 ## Why Open Models Matter
@@ -98,7 +102,7 @@ This is a tool for **family voice notes** — some of the most private audio tha
 - **Gemma 4** summarizes the digest because it's an open-weight model I can swap, self-host, or point at any provider without rewriting the pipeline. The `LLM_PROVIDER` interface accepts Google AI Studio or any OpenAI-compatible endpoint (OpenRouter included) — no vendor lock-in on the brain of the system.
 - **Whisper-large-v3 via Groq** is the open-weights baseline, so the STT comparison is between two models whose weights and behavior I can inspect — not a black box I have to trust.
 - **Edge-TTS** keeps development free and local-first; ElevenLabs is opt-in for the final demo voice, never a hard dependency.
-- **MongoDB's free tier and a fallback in-memory store** mean the whole system runs on zero infrastructure cost.
+- **Local-first ephemeral memory by default** means zero infrastructure setup and zero database footprints. Family audio notes and briefings live strictly in-memory during the session and vanish on server restart, ensuring privacy. MongoDB Atlas is an optional, opt-in adapter only if you desire cross-session persistence.
 
 The result: a family can run this on their own terms, with their own keys, and swap any component without forking the project.
 
@@ -110,9 +114,9 @@ The result: a family can run this on their own terms, with their own keys, and s
 | STT | Sarvam Saaras · Groq Whisper-large-v3 (pluggable) |
 | Summarization | Gemma 4 via Gemini API (OpenAI-compatible fallback supported) |
 | TTS | Edge-TTS (dev) · ElevenLabs (demo) |
-| Backend | FastAPI, Pydantic v2, Motor (MongoDB async) |
+| Backend | FastAPI, Pydantic v2 (zero-config in-memory session engine) |
 | Frontend | Next.js App Router, TypeScript, Tailwind CSS |
-| Database | MongoDB Atlas M0, with in-memory fallback |
+| Storage & Persistence | Ephemeral in-memory (default, zero-cost) · MongoDB Atlas (optional) |
 
 ## Quick Start
 
@@ -164,7 +168,7 @@ pipeline/           Core processing pipeline
 ├── eval.py         Bake-off harness (WER + LLM-judge + noise guard)
 └── run.py          CLI runner
 
-backend/            FastAPI server, MongoDB persistence
+backend/            FastAPI server (ephemeral memory + optional MongoDB persistence)
 frontend/           Next.js single-page UI
 tests/              37 tests covering parser, VAD, STT, TTS, eval, API
 test_data/          Bake-off manifest + voice clips

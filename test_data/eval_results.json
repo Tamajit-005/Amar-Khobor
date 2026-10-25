@@ -1,0 +1,140 @@
+{
+  "saaras": {
+    "avg_wer_monolingual": 0.0,
+    "avg_llm_judge_codemixed": 0.0,
+    "avg_latency_ms": 499,
+    "noise_hallucinations": 0,
+    "total_clips": 5,
+    "details": [
+      {
+        "clip_id": "bn_001",
+        "language_mode": "bn-IN",
+        "provider": "saaras",
+        "ground_truth": "আর ভাবছি এখন থেকেই প্ল্যান করা উচিত কোথায় ঘুরবো, কত টাকা খরচ হবে আর কে কে যাচ্ছে। আমি তো ভাবলাম শান্তিনিকেতনে একটা ভালো লজে থাকবো আর ওখানে সোনাঝুরির হাটে হাটও দেখে আসতে পারি। তোমরা ভেবে দেখো ভালো অপশন আছে নাকি।",
+        "hypothesis": "আর ভাবছি এখন থেকেই প্ল্যান করা উচিত কোথায় ঘুরবো, কত টাকা খরচ হবে আর কে কে যাচ্ছে। আমি তো ভাবলাম শান্তিনিকেতনে একটা ভালো লজে থাকবো আর ওখানে সোনাঝুরির হাটে হাটও দেখে আসতে পারি। তোমরা ভেবে দেখো ভালো অপশন আছে নাকি।",
+        "eval_type": "wer",
+        "wer": 0.0,
+        "score": 1.0,
+        "latency_ms": 645,
+        "hallucinated": false
+      },
+      {
+        "clip_id": "bn_002",
+        "language_mode": "bn-IN",
+        "provider": "saaras",
+        "ground_truth": "ঠিক আছে, দুহাজার করে খরচ করলে ভালো। কিন্তু সোনাঝুরির হাটে যদি বেশি কেনাকাটা হয়, ওখানে বেশি খরচ করবো না। এবার তোমরা সেটা বুঝে নিও।",
+        "hypothesis": "ঠিক আছে, দুহাজার করে খরচ করলে ভালো। কিন্তু সোনাঝুরির হাটে যদি বেশি কেনাকাটা হয়, ওখানে বেশি খরচ করবো না। এবার তোমরা সেটা বুঝে নিও।",
+        "eval_type": "wer",
+        "wer": 0.0,
+        "score": 1.0,
+        "latency_ms": 468,
+        "hallucinated": false
+      },
+      {
+        "clip_id": "bn_003",
+        "language_mode": "bn-IN",
+        "provider": "saaras",
+        "ground_truth": "আমি ভেবেছিলাম হার্টের সমস্যা, কিন্তু দাদু বলল গ্যাসের সমস্যা। এদেকাত, তুমি এখনই যাও দাদুকে দেখে আসো। আর বাকিরা প্লিজ টেনশন করো না, আমিও এখনই যাচ্ছি।",
+        "hypothesis": "আমি ভেবেছিলাম হার্টের সমস্যা, কিন্তু দাদু বলল গ্যাসের সমস্যা। এদেকাত, তুমি এখনই যাও দাদুকে দেখে আসো। আর বাকিরা প্লিজ টেনশন করো না, আমিও এখনই যাচ্ছি।",
+        "eval_type": "wer",
+        "wer": 0.0,
+        "score": 1.0,
+        "latency_ms": 559,
+        "hallucinated": false
+      },
+      {
+        "clip_id": "bn_004",
+        "language_mode": "bn-IN",
+        "provider": "saaras",
+        "ground_truth": "দাদু এখন ভালো আছে। খিচুড়ি খেয়ে নিল। কাল সকালে ডক্টর সেনের কাছে নিয়ে যাব। তোমরা সবাই ঘুমাও। কালকে দেখা যাবে।",
+        "hypothesis": "দাদু এখন ভালো আছে। খিচুড়ি খেয়ে নিল। কাল সকালে ডক্টর সেনের কাছে নিয়ে যাব। তোমরা সবাই ঘুমাও। কালকে দেখা যাবে।",
+        "eval_type": "wer",
+        "wer": 0.0,
+        "score": 1.0,
+        "latency_ms": 529,
+        "hallucinated": false
+      },
+      {
+        "clip_id": "noise_001",
+        "language_mode": "noise",
+        "provider": "saaras",
+        "ground_truth": "[SILENCE/NOISE]",
+        "hypothesis": "",
+        "eval_type": "noise_guard",
+        "wer": null,
+        "score": 5.0,
+        "latency_ms": 298,
+        "hallucinated": false
+      }
+    ]
+  },
+  "whisper": {
+    "avg_wer_monolingual": 0.6713,
+    "avg_llm_judge_codemixed": 0.0,
+    "avg_latency_ms": 814,
+    "noise_hallucinations": 1,
+    "total_clips": 5,
+    "details": [
+      {
+        "clip_id": "bn_001",
+        "language_mode": "bn-IN",
+        "provider": "whisper",
+        "ground_truth": "আর ভাবছি এখন থেকেই প্ল্যান করা উচিত কোথায় ঘুরবো, কত টাকা খরচ হবে আর কে কে যাচ্ছে। আমি তো ভাবলাম শান্তিনিকেতনে একটা ভালো লজে থাকবো আর ওখানে সোনাঝুরির হাটে হাটও দেখে আসতে পারি। তোমরা ভেবে দেখো ভালো অপশন আছে নাকি।",
+        "hypothesis": "আর ভাবছি এখন তেকি পলান করা উচিত কোথায় গুরবো কতো টাগা খরাছোবে আর কেকে জাছে আমিতো ভাবলাম শান্তি নিগোতন একটা বালো লজ",
+        "eval_type": "wer",
+        "wer": 0.8,
+        "score": 0.2,
+        "latency_ms": 951,
+        "hallucinated": false
+      },
+      {
+        "clip_id": "bn_002",
+        "language_mode": "bn-IN",
+        "provider": "whisper",
+        "ground_truth": "ঠিক আছে, দুহাজার করে খরচ করলে ভালো। কিন্তু সোনাঝুরির হাটে যদি বেশি কেনাকাটা হয়, ওখানে বেশি খরচ করবো না। এবার তোমরা সেটা বুঝে নিও।",
+        "hypothesis": "থিকাছে, দুভাজার করে খরস করলে ভালো, কিন্তু সোনাজুরির হাটে যুদি বেশি কেনা গাটা হয়, ওখানে বেশি খরস করোনা, এবার তমারে স",
+        "eval_type": "wer",
+        "wer": 0.625,
+        "score": 0.375,
+        "latency_ms": 844,
+        "hallucinated": false
+      },
+      {
+        "clip_id": "bn_003",
+        "language_mode": "bn-IN",
+        "provider": "whisper",
+        "ground_truth": "আমি ভেবেছিলাম হার্টের সমস্যা, কিন্তু দাদু বলল গ্যাসের সমস্যা। এদেকাত, তুমি এখনই যাও দাদুকে দেখে আসো। আর বাকিরা প্লিজ টেনশন করো না, আমিও এখনই যাচ্ছি।",
+        "hypothesis": "আমি হেবে ছিলাম হাটে সমসা কিন্তু দাদু ভললো গ্যাসে সমসা এদেকাদ তুমি এখনি জাও দাদু কে দেখে আশো আর বাকেলা প্লিস টেনশন করো না আমি ও এখনি যাছি",
+        "eval_type": "wer",
+        "wer": 0.76,
+        "score": 0.24,
+        "latency_ms": 1104,
+        "hallucinated": false
+      },
+      {
+        "clip_id": "bn_004",
+        "language_mode": "bn-IN",
+        "provider": "whisper",
+        "ground_truth": "দাদু এখন ভালো আছে। খিচুড়ি খেয়ে নিল। কাল সকালে ডক্টর সেনের কাছে নিয়ে যাব। তোমরা সবাই ঘুমাও। কালকে দেখা যাবে।",
+        "hypothesis": "দাদু এখন ভালো আছে, খিচুরি খেনিলো, কাল সকালে ডক্টের সেনের কাছে নিয়ি জাবো, তুমরা সবাই ঘুমাও, কাল কে দেখা জাবে",
+        "eval_type": "wer",
+        "wer": 0.5,
+        "score": 0.5,
+        "latency_ms": 822,
+        "hallucinated": false
+      },
+      {
+        "clip_id": "noise_001",
+        "language_mode": "noise",
+        "provider": "whisper",
+        "ground_truth": "[SILENCE/NOISE]",
+        "hypothesis": "you",
+        "eval_type": "noise_guard",
+        "wer": null,
+        "score": 0.0,
+        "latency_ms": 351,
+        "hallucinated": true
+      }
+    ]
+  }
+}

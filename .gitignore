@@ -21,5 +21,3 @@ htmlcov/
 .vscode/
 *.tsbuildinfo
 data/
-sample_data/
-test_data/

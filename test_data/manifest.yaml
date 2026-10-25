@@ -1,0 +1,36 @@
+version: "1.1"
+description: "Amar Khobor Dual-STT Bake-Off Benchmark Dataset"
+# Clips bn_001..bn_004 are the four real voice notes from the 25 Oct 2026 family
+# export used in demo/ (PTT-20261025-WA0028..0031.opus). References are the
+# Saaras transcripts, with the speaker name in bn_003 corrected from the chat
+# log; confirm by ear before quoting the leaderboard.
+clips:
+  - id: "bn_001"
+    language_mode: "bn-IN"
+    audio: "test_data/audio/clip_bn_001.wav"
+    ground_truth: "আর ভাবছি এখন থেকেই প্ল্যান করা উচিত কোথায় ঘুরবো, কত টাকা খরচ হবে আর কে কে যাচ্ছে। আমি তো ভাবলাম শান্তিনিকেতনে একটা ভালো লজে থাকবো আর ওখানে সোনাঝুরির হাটে হাটও দেখে আসতে পারি। তোমরা ভেবে দেখো ভালো অপশন আছে নাকি।"
+    duration_s: 17.93
+
+  - id: "bn_002"
+    language_mode: "bn-IN"
+    audio: "test_data/audio/clip_bn_002.wav"
+    ground_truth: "ঠিক আছে, দুহাজার করে খরচ করলে ভালো। কিন্তু সোনাঝুরির হাটে যদি বেশি কেনাকাটা হয়, ওখানে বেশি খরচ করবো না। এবার তোমরা সেটা বুঝে নিও।"
+    duration_s: 8.71
+
+  - id: "bn_003"
+    language_mode: "bn-IN"
+    audio: "test_data/audio/clip_bn_003.wav"
+    ground_truth: "আমি ভেবেছিলাম হার্টের সমস্যা, কিন্তু দাদু বলল গ্যাসের সমস্যা। এদেকাত, তুমি এখনই যাও দাদুকে দেখে আসো। আর বাকিরা প্লিজ টেনশন করো না, আমিও এখনই যাচ্ছি।"
+    duration_s: 10.29
+
+  - id: "bn_004"
+    language_mode: "bn-IN"
+    audio: "test_data/audio/clip_bn_004.wav"
+    ground_truth: "দাদু এখন ভালো আছে। খিচুড়ি খেয়ে নিল। কাল সকালে ডক্টর সেনের কাছে নিয়ে যাব। তোমরা সবাই ঘুমাও। কালকে দেখা যাবে।"
+    duration_s: 8.19
+
+  - id: "noise_001"
+    language_mode: "noise"
+    audio: "test_data/audio/clip_noise.wav"
+    ground_truth: "[SILENCE/NOISE]"
+    duration_s: 1.0
