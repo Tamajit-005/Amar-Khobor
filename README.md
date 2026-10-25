@@ -90,7 +90,6 @@ Text normalization before WER: Unicode NFC, zero-width joiner/non-joiner strippi
 | **Saaras** | Coherent and complete — captured the full request including "দুটো রুটি হলে হবে" and code-mixed "চিলি চিকেন করিস, বেটার হবে" |
 | **Whisper** | Repetitive and fragmented — lost sentence structure, repeated "চিকেন" three times, dropped context |
 
-Full methodology and per-clip results: [`test_data/manifest.yaml`](test_data/manifest.yaml) · run it yourself with the command in Quick Start.
 
 ## Why Open Models Matter
 
