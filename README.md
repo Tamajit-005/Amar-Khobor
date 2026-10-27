@@ -4,7 +4,7 @@
 
 Amar Khobor turns a chaotic overnight WhatsApp group — dozens of voice notes in Bengali, Hindi, English, Benglish, and Hinglish — into one warm, two-minute audio briefing you can play while making morning tea. No more scrolling through 40 voice notes to find out who needs what by when.
 
-**[▶ Listen to a sample briefing](demo/sample_briefing.mp3)** · **[Read the build story](YOUR_DEVTO_POST_URL)**
+**[▶ Listen to a sample briefing](demo/sample_briefing.mp3)** · **[Read the build story](https://dev.to/tamajit005/56-messages-4-voice-notes-48-seconds-the-briefing-that-reads-my-familys-whatsapp-while-i-sleep-3nmp)**
 
 ---
 
@@ -154,6 +154,16 @@ MOCK_MODE=true
 ```
 
 Runs the entire pipeline against local fixtures — useful for development and CI without spending credits.
+
+### Cloud & Container Deployment
+
+- **Docker:** Build and run the backend container locally (includes FFmpeg):
+  ```bash
+  docker build -t amar-khobor-backend .
+  docker run -p 8000:8000 --env-file .env amar-khobor-backend
+  ```
+- **Render:** Deploy backend directly using `render.yaml` (Docker runtime).
+- **Vercel:** Deploy the `frontend/` directory to Vercel. Set `NEXT_PUBLIC_API_URL` to your Render backend URL. Backend CORS pre-approves `amar-khobor.vercel.app` and all `*.vercel.app` preview branches.
 
 ## Project Structure
 
